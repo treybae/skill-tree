@@ -4,6 +4,84 @@
 
 :root {
   color-scheme: light;
+
+  --color-surface: 255 255 255;
+
+  --color-ink-50: 250 247 240;
+  --color-ink-100: 242 234 216;
+  --color-ink-200: 227 213 179;
+  --color-ink-300: 203 180 137;
+  --color-ink-400: 168 143 99;
+  --color-ink-500: 131 112 78;
+  --color-ink-600: 97 80 58;
+  --color-ink-700: 69 58 43;
+  --color-ink-800: 44 37 26;
+  --color-ink-900: 26 22 16;
+
+  --color-gold-50: 253 246 227;
+  --color-gold-100: 248 232 189;
+  --color-gold-400: 201 147 46;
+  --color-gold-500: 168 120 31;
+  --color-gold-600: 138 97 25;
+
+  --color-arcane-50: 241 237 252;
+  --color-arcane-100: 222 211 248;
+  --color-arcane-400: 115 87 255;
+  --color-arcane-500: 91 63 224;
+  --color-arcane-600: 74 48 191;
+
+  --color-ember-50: 255 240 232;
+  --color-ember-100: 255 218 194;
+  --color-ember-400: 224 86 42;
+  --color-ember-500: 194 67 28;
+  --color-ember-600: 162 54 22;
+
+  --color-leaf-50: 234 248 239;
+  --color-leaf-100: 205 238 217;
+  --color-leaf-400: 47 158 94;
+  --color-leaf-500: 37 130 76;
+  --color-leaf-600: 29 106 61;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --color-surface: 42 33 24;
+
+  --color-ink-50: 26 22 16;
+  --color-ink-100: 44 37 26;
+  --color-ink-200: 69 58 43;
+  --color-ink-300: 97 80 58;
+  --color-ink-400: 131 112 78;
+  --color-ink-500: 168 143 99;
+  --color-ink-600: 203 180 137;
+  --color-ink-700: 227 213 179;
+  --color-ink-800: 242 234 216;
+  --color-ink-900: 250 247 240;
+
+  --color-gold-50: 61 47 18;
+  --color-gold-100: 74 57 21;
+  --color-gold-400: 217 164 65;
+  --color-gold-500: 201 147 46;
+  --color-gold-600: 242 203 109;
+
+  --color-arcane-50: 36 29 74;
+  --color-arcane-100: 46 34 102;
+  --color-arcane-400: 157 137 255;
+  --color-arcane-500: 178 149 255;
+  --color-arcane-600: 200 180 255;
+
+  --color-ember-50: 61 34 22;
+  --color-ember-100: 82 43 26;
+  --color-ember-400: 255 138 92;
+  --color-ember-500: 255 122 77;
+  --color-ember-600: 255 143 102;
+
+  --color-leaf-50: 22 48 31;
+  --color-leaf-100: 30 64 40;
+  --color-leaf-400: 76 191 130;
+  --color-leaf-500: 58 168 112;
+  --color-leaf-600: 168 230 194;
 }
 
 html,
@@ -14,8 +92,10 @@ body,
 }
 
 body {
-  background: #faf7f0;
+  background: rgb(var(--color-ink-50));
+  color: rgb(var(--color-ink-900));
   font-family: 'Inter', system-ui, sans-serif;
+  transition: background-color 0.2s ease;
 }
 
 ::-webkit-scrollbar {
@@ -23,12 +103,12 @@ body {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #f2ead8;
+  background: rgb(var(--color-ink-100));
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbb489;
+  background: rgb(var(--color-ink-300));
   border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #a88f63;
+  background: rgb(var(--color-ink-400));
 }

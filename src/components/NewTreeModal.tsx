@@ -19,10 +19,10 @@ export function NewTreeModal({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink-900/40 p-4" onClick={onClose}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4" onClick={onClose}>
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-md rounded-xl border border-ink-200 bg-white p-5 shadow-2xl"
+        className="w-full max-w-md rounded-xl border border-ink-200 bg-surface p-5 shadow-2xl"
       >
         <h2 className="font-display text-lg font-bold text-gold-600">Begin a New Path</h2>
         <div className="mt-4 flex flex-col gap-3">
@@ -34,7 +34,7 @@ export function NewTreeModal({ onClose }: { onClose: () => void }) {
               onChange={(e) => setName(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && submit()}
               placeholder="e.g. Public Speaking Mastery"
-              className="w-full rounded-lg border border-ink-300 bg-white px-3 py-2 text-sm text-ink-900 outline-none focus:border-gold-500"
+              className="w-full rounded-lg border border-ink-300 bg-surface px-3 py-2 text-sm text-ink-900 outline-none focus:border-gold-500"
             />
           </div>
           <div>
@@ -44,7 +44,7 @@ export function NewTreeModal({ onClose }: { onClose: () => void }) {
               onChange={(e) => setDescription(e.target.value)}
               rows={2}
               placeholder="What is this journey about?"
-              className="w-full resize-none rounded-lg border border-ink-300 bg-white px-3 py-2 text-sm text-ink-900 outline-none focus:border-gold-500"
+              className="w-full resize-none rounded-lg border border-ink-300 bg-surface px-3 py-2 text-sm text-ink-900 outline-none focus:border-gold-500"
             />
           </div>
           <div>

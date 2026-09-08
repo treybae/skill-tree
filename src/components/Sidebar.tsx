@@ -13,7 +13,7 @@ export function Sidebar() {
   const [collapsedAreas, setCollapsedAreas] = useState<Record<string, boolean>>({})
 
   return (
-    <aside className="flex h-full w-72 shrink-0 flex-col border-r border-ink-200 bg-white/80 backdrop-blur">
+    <aside className="flex h-full w-72 shrink-0 flex-col border-r border-ink-200 bg-surface/80 backdrop-blur">
       <div className="border-b border-ink-200 px-4 py-4">
         <h1 className="font-display text-xl font-bold tracking-wide text-gold-600">Skill Tree</h1>
         <p className="mt-0.5 text-xs text-ink-500">Your quest log for growth</p>

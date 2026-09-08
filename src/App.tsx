@@ -1,5 +1,7 @@
+import { useEffect } from 'react'
 import { ReactFlowProvider } from '@xyflow/react'
 import { useTreeStore } from './store/useTreeStore'
+import { useResolvedTheme } from './store/useThemeStore'
 import { Sidebar } from './components/Sidebar'
 import { CharacterHeader } from './components/CharacterHeader'
 import { TreeCanvas } from './components/TreeCanvas'
@@ -9,6 +11,11 @@ function App() {
   const trees = useTreeStore((s) => s.trees)
   const activeTreeId = useTreeStore((s) => s.activeTreeId)
   const activeTree = trees.find((t) => t.id === activeTreeId) ?? null
+
+  const resolvedTheme = useResolvedTheme()
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', resolvedTheme === 'dark')
+  }, [resolvedTheme])
 
   return (
     <div className="flex h-screen w-screen flex-col overflow-hidden bg-ink-50 text-ink-900">

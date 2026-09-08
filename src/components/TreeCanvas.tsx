@@ -12,13 +12,21 @@ import {
 } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import { useTreeStore } from '../store/useTreeStore'
+import { useResolvedTheme } from '../store/useThemeStore'
 import { deriveStatus } from '../utils/skillTreeLogic'
 import { SkillNode, type FlowSkillNode } from './SkillNode'
 import type { SkillTree } from '../types'
 
 const nodeTypes = { skill: SkillNode }
 
+const CANVAS_COLORS = {
+  light: { dot: '#e3d5b3', edgeInactive: '#cbb489', minimapMask: 'rgba(250, 247, 240, 0.75)' },
+  dark: { dot: '#453a2b', edgeInactive: '#61503a', minimapMask: 'rgba(26, 22, 16, 0.75)' },
+}
+
 export function TreeCanvas({ tree }: { tree: SkillTree }) {
+  const resolvedTheme = useResolvedTheme()
+  const canvasColors = CANVAS_COLORS[resolvedTheme]
   const moveNode = useTreeStore((s) => s.moveNode)
   const addEdge = useTreeStore((s) => s.addEdge)
   const deleteEdge = useTreeStore((s) => s.deleteEdge)
@@ -49,12 +57,12 @@ export function TreeCanvas({ tree }: { tree: SkillTree }) {
           target: e.target,
           animated: active && targetStatus !== 'completed',
           style: {
-            stroke: active ? tree.color : '#cbb489',
+            stroke: active ? tree.color : canvasColors.edgeInactive,
             strokeWidth: active ? 2.5 : 1.5,
           },
         }
       }),
-    [tree]
+    [tree, canvasColors.edgeInactive]
   )
 
   const onNodesChange: OnNodesChange<FlowSkillNode> = useCallback(
@@ -110,13 +118,13 @@ export function TreeCanvas({ tree }: { tree: SkillTree }) {
       minZoom={0.2}
       maxZoom={1.5}
     >
-      <Background variant={BackgroundVariant.Dots} gap={22} size={1.2} color="#d7c7a3" />
-      <Controls className="!bg-white !border-ink-300 [&_button]:!bg-white [&_button]:!border-ink-300 [&_button]:!fill-ink-600 [&_button:hover]:!bg-ink-100" />
+      <Background variant={BackgroundVariant.Dots} gap={22} size={1.2} color={canvasColors.dot} />
+      <Controls className="!bg-surface !border-ink-300 [&_button]:!bg-surface [&_button]:!border-ink-300 [&_button]:!fill-ink-600 [&_button:hover]:!bg-ink-100" />
       <MiniMap
         pannable
         zoomable
-        className="!bg-white !border !border-ink-300"
-        maskColor="rgba(250, 247, 240, 0.75)"
+        className="!bg-surface !border !border-ink-300"
+        maskColor={canvasColors.minimapMask}
         nodeColor={(n) => (n.data?.accentColor as string) ?? '#7357ff'}
       />
     </ReactFlow>

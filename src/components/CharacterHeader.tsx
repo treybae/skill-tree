@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { useTreeStore } from '../store/useTreeStore'
 import { treeStats, levelFromXp } from '../utils/skillTreeLogic'
 import { LIFE_AREAS } from '../types'
+import { ThemeToggle } from './ThemeToggle'
 
 export function CharacterHeader() {
   const trees = useTreeStore((s) => s.trees)
@@ -29,7 +30,7 @@ export function CharacterHeader() {
   const levelPct = Math.round((xpIntoLevel / xpForNextLevel) * 100)
 
   return (
-    <header className="flex items-center gap-6 border-b border-ink-200 bg-white/90 px-5 py-3">
+    <header className="flex items-center gap-6 border-b border-ink-200 bg-surface/90 px-5 py-3">
       <div className="flex items-center gap-3">
         <div className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-gold-500 bg-gold-50 font-display text-lg font-bold text-gold-600 shadow-glow shadow-gold-400/30">
           {level}
@@ -54,19 +55,22 @@ export function CharacterHeader() {
         <Stat label="Skills Mastered" value={`${totalCompleted}/${totalNodes}`} />
       </div>
 
-      <div className="ml-auto hidden items-center gap-3 lg:flex">
-        {LIFE_AREAS.map((area) => {
-          const b = areaBreakdown[area.id]
-          if (!b || b.total === 0) return null
-          return (
-            <div key={area.id} className="flex items-center gap-1.5 rounded-full bg-ink-100 px-2.5 py-1" title={area.label}>
-              <span className="text-sm">{area.icon}</span>
-              <span className="text-[11px] font-medium text-ink-700">
-                {b.completed}/{b.total}
-              </span>
-            </div>
-          )
-        })}
+      <div className="ml-auto flex items-center gap-3">
+        <div className="hidden items-center gap-3 lg:flex">
+          {LIFE_AREAS.map((area) => {
+            const b = areaBreakdown[area.id]
+            if (!b || b.total === 0) return null
+            return (
+              <div key={area.id} className="flex items-center gap-1.5 rounded-full bg-ink-100 px-2.5 py-1" title={area.label}>
+                <span className="text-sm">{area.icon}</span>
+                <span className="text-[11px] font-medium text-ink-700">
+                  {b.completed}/{b.total}
+                </span>
+              </div>
+            )
+          })}
+        </div>
+        <ThemeToggle />
       </div>
     </header>
   )

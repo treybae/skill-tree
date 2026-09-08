@@ -41,7 +41,7 @@ export function NodeEditorPanel({ tree }: { tree: SkillTree }) {
 
   if (!node) {
     return (
-      <aside className="flex h-full w-80 shrink-0 flex-col border-l border-ink-200 bg-white/80 backdrop-blur">
+      <aside className="flex h-full w-80 shrink-0 flex-col border-l border-ink-200 bg-surface/80 backdrop-blur">
         <div className="border-b border-ink-200 px-4 py-4">
           <input
             value={tree.name}
@@ -77,7 +77,7 @@ export function NodeEditorPanel({ tree }: { tree: SkillTree }) {
   const isLocked = status === 'locked'
 
   return (
-    <aside className="flex h-full w-80 shrink-0 flex-col overflow-y-auto border-l border-ink-200 bg-white/80 backdrop-blur">
+    <aside className="flex h-full w-80 shrink-0 flex-col overflow-y-auto border-l border-ink-200 bg-surface/80 backdrop-blur">
       <div className="flex items-center justify-between border-b border-ink-200 px-4 py-3">
         <button onClick={() => setSelectedNode(null)} className="text-xs text-ink-500 hover:text-ink-800">
           &larr; Back
@@ -118,7 +118,7 @@ export function NodeEditorPanel({ tree }: { tree: SkillTree }) {
           <input
             value={node.title}
             onChange={(e) => updateNode(tree.id, node.id, { title: e.target.value })}
-            className="w-full rounded-lg border border-ink-300 bg-white px-3 py-2 font-display text-base font-semibold text-ink-900 outline-none focus:border-gold-500"
+            className="w-full rounded-lg border border-ink-300 bg-surface px-3 py-2 font-display text-base font-semibold text-ink-900 outline-none focus:border-gold-500"
           />
         </div>
 
@@ -128,7 +128,7 @@ export function NodeEditorPanel({ tree }: { tree: SkillTree }) {
             value={node.description}
             onChange={(e) => updateNode(tree.id, node.id, { description: e.target.value })}
             rows={3}
-            className="w-full resize-none rounded-lg border border-ink-300 bg-white px-3 py-2 text-sm text-ink-900 outline-none focus:border-gold-500"
+            className="w-full resize-none rounded-lg border border-ink-300 bg-surface px-3 py-2 text-sm text-ink-900 outline-none focus:border-gold-500"
           />
         </div>
 
@@ -140,7 +140,7 @@ export function NodeEditorPanel({ tree }: { tree: SkillTree }) {
               min={0}
               value={node.xp}
               onChange={(e) => updateNode(tree.id, node.id, { xp: Math.max(0, Number(e.target.value) || 0) })}
-              className="w-full rounded-lg border border-ink-300 bg-white px-3 py-2 text-sm text-ink-900 outline-none focus:border-gold-500"
+              className="w-full rounded-lg border border-ink-300 bg-surface px-3 py-2 text-sm text-ink-900 outline-none focus:border-gold-500"
             />
           </div>
           <div className="flex-1">
@@ -149,7 +149,7 @@ export function NodeEditorPanel({ tree }: { tree: SkillTree }) {
               value={node.manualStatus}
               disabled={isLocked}
               onChange={(e) => updateNode(tree.id, node.id, { manualStatus: e.target.value as typeof node.manualStatus })}
-              className="w-full rounded-lg border border-ink-300 bg-white px-3 py-2 text-sm text-ink-900 outline-none focus:border-gold-500 disabled:opacity-50"
+              className="w-full rounded-lg border border-ink-300 bg-surface px-3 py-2 text-sm text-ink-900 outline-none focus:border-gold-500 disabled:opacity-50"
             >
               {STATUS_OPTIONS.map((o) => (
                 <option key={o.id} value={o.id}>
@@ -167,7 +167,7 @@ export function NodeEditorPanel({ tree }: { tree: SkillTree }) {
             onChange={(e) => updateNode(tree.id, node.id, { notes: e.target.value })}
             rows={3}
             placeholder="Personal notes, journal, progress log..."
-            className="w-full resize-none rounded-lg border border-ink-300 bg-white px-3 py-2 text-sm text-ink-900 outline-none focus:border-gold-500"
+            className="w-full resize-none rounded-lg border border-ink-300 bg-surface px-3 py-2 text-sm text-ink-900 outline-none focus:border-gold-500"
           />
         </div>
 
@@ -201,14 +201,14 @@ export function NodeEditorPanel({ tree }: { tree: SkillTree }) {
               value={newResourceLabel}
               onChange={(e) => setNewResourceLabel(e.target.value)}
               placeholder="Label (e.g. Course, Book)"
-              className="w-full rounded-lg border border-ink-300 bg-white px-2.5 py-1.5 text-xs text-ink-900 outline-none focus:border-gold-500"
+              className="w-full rounded-lg border border-ink-300 bg-surface px-2.5 py-1.5 text-xs text-ink-900 outline-none focus:border-gold-500"
             />
             <div className="flex gap-1.5">
               <input
                 value={newResourceUrl}
                 onChange={(e) => setNewResourceUrl(e.target.value)}
                 placeholder="https://..."
-                className="flex-1 rounded-lg border border-ink-300 bg-white px-2.5 py-1.5 text-xs text-ink-900 outline-none focus:border-gold-500"
+                className="flex-1 rounded-lg border border-ink-300 bg-surface px-2.5 py-1.5 text-xs text-ink-900 outline-none focus:border-gold-500"
               />
               <button
                 onClick={() => {

@@ -12,8 +12,8 @@ export type FlowSkillNode = Node<SkillFlowNodeData, 'skill'>
 
 const STATUS_STYLES: Record<NodeStatus, string> = {
   locked: 'border-ink-300 bg-ink-100/80 text-ink-500 opacity-70 grayscale',
-  available: 'border-arcane-400 bg-white text-ink-800 shadow-arcane-400/30 shadow-glow',
-  'in-progress': 'border-gold-500 bg-white text-ink-800 shadow-gold-400/40 shadow-glow animate-pulseGlow',
+  available: 'border-arcane-400 bg-surface text-ink-800 shadow-arcane-400/30 shadow-glow',
+  'in-progress': 'border-gold-500 bg-surface text-ink-800 shadow-gold-400/40 shadow-glow animate-pulseGlow',
   completed: 'border-leaf-500 bg-leaf-50 text-ink-800 shadow-leaf-400/40 shadow-glow',
 }
 
@@ -34,8 +34,8 @@ function SkillNodeInner({ data, selected }: NodeProps<FlowSkillNode>) {
       }`}
       style={status !== 'locked' ? { borderColor: status === 'available' ? data.accentColor : undefined } : undefined}
     >
-      <Handle type="target" position={Position.Left} className="!h-3 !w-3 !border-2 !border-white !bg-gold-500" />
-      <Handle type="source" position={Position.Right} className="!h-3 !w-3 !border-2 !border-white !bg-gold-500" />
+      <Handle type="target" position={Position.Left} className="!h-3 !w-3 !border-2 !border-surface !bg-gold-500" />
+      <Handle type="source" position={Position.Right} className="!h-3 !w-3 !border-2 !border-surface !bg-gold-500" />
 
       <div className="flex items-center justify-between gap-2">
         <span className="text-lg leading-none">{status === 'locked' ? '🔒' : data.icon}</span>
