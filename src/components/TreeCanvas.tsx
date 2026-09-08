@@ -49,7 +49,7 @@ export function TreeCanvas({ tree }: { tree: SkillTree }) {
           target: e.target,
           animated: active && targetStatus !== 'completed',
           style: {
-            stroke: active ? tree.color : '#3a2f57',
+            stroke: active ? tree.color : '#cbb489',
             strokeWidth: active ? 2.5 : 1.5,
           },
         }
@@ -110,13 +110,13 @@ export function TreeCanvas({ tree }: { tree: SkillTree }) {
       minZoom={0.2}
       maxZoom={1.5}
     >
-      <Background variant={BackgroundVariant.Dots} gap={22} size={1.2} color="#3a2f57" />
-      <Controls className="!bg-ink-800 !border-ink-600 [&_button]:!bg-ink-800 [&_button]:!border-ink-600 [&_button]:!fill-ink-200 [&_button:hover]:!bg-ink-700" />
+      <Background variant={BackgroundVariant.Dots} gap={22} size={1.2} color="#d7c7a3" />
+      <Controls className="!bg-white !border-ink-300 [&_button]:!bg-white [&_button]:!border-ink-300 [&_button]:!fill-ink-600 [&_button:hover]:!bg-ink-100" />
       <MiniMap
         pannable
         zoomable
-        className="!bg-ink-900 !border !border-ink-700"
-        maskColor="rgba(10, 8, 18, 0.75)"
+        className="!bg-white !border !border-ink-300"
+        maskColor="rgba(250, 247, 240, 0.75)"
         nodeColor={(n) => (n.data?.accentColor as string) ?? '#7357ff'}
       />
     </ReactFlow>

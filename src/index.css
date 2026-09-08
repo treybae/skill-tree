@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html,
@@ -14,7 +14,7 @@ body,
 }
 
 body {
-  background: #0a0812;
+  background: #faf7f0;
   font-family: 'Inter', system-ui, sans-serif;
 }
 
@@ -23,12 +23,12 @@ body {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #120e1e;
+  background: #f2ead8;
 }
 ::-webkit-scrollbar-thumb {
-  background: #3a2f57;
+  background: #cbb489;
   border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #5b3fe0;
+  background: #a88f63;
 }

@@ -29,15 +29,15 @@ export function CharacterHeader() {
   const levelPct = Math.round((xpIntoLevel / xpForNextLevel) * 100)
 
   return (
-    <header className="flex items-center gap-6 border-b border-ink-700 bg-ink-900/90 px-5 py-3">
+    <header className="flex items-center gap-6 border-b border-ink-200 bg-white/90 px-5 py-3">
       <div className="flex items-center gap-3">
-        <div className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-gold-500 bg-ink-850 font-display text-lg font-bold text-gold-400 shadow-glow shadow-gold-500/40">
+        <div className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-gold-500 bg-gold-50 font-display text-lg font-bold text-gold-600 shadow-glow shadow-gold-400/30">
           {level}
         </div>
         <div>
-          <div className="text-xs font-semibold uppercase tracking-wider text-ink-400">Level</div>
+          <div className="text-xs font-semibold uppercase tracking-wider text-ink-500">Level</div>
           <div className="w-40">
-            <div className="h-2 overflow-hidden rounded-full bg-ink-700">
+            <div className="h-2 overflow-hidden rounded-full bg-ink-200">
               <div className="h-full rounded-full bg-gradient-to-r from-gold-600 to-gold-400" style={{ width: `${levelPct}%` }} />
             </div>
             <div className="mt-0.5 text-[10px] text-ink-500">
@@ -47,7 +47,7 @@ export function CharacterHeader() {
         </div>
       </div>
 
-      <div className="hidden h-8 w-px bg-ink-700 sm:block" />
+      <div className="hidden h-8 w-px bg-ink-200 sm:block" />
 
       <div className="hidden gap-4 sm:flex">
         <Stat label="Total XP" value={totalEarned} />
@@ -59,9 +59,9 @@ export function CharacterHeader() {
           const b = areaBreakdown[area.id]
           if (!b || b.total === 0) return null
           return (
-            <div key={area.id} className="flex items-center gap-1.5 rounded-full bg-ink-850 px-2.5 py-1" title={area.label}>
+            <div key={area.id} className="flex items-center gap-1.5 rounded-full bg-ink-100 px-2.5 py-1" title={area.label}>
               <span className="text-sm">{area.icon}</span>
-              <span className="text-[11px] font-medium text-ink-300">
+              <span className="text-[11px] font-medium text-ink-700">
                 {b.completed}/{b.total}
               </span>
             </div>
@@ -75,8 +75,8 @@ export function CharacterHeader() {
 function Stat({ label, value }: { label: string; value: string | number }) {
   return (
     <div>
-      <div className="text-xs font-semibold uppercase tracking-wider text-ink-400">{label}</div>
-      <div className="font-display text-lg font-bold text-ink-100">{value}</div>
+      <div className="text-xs font-semibold uppercase tracking-wider text-ink-500">{label}</div>
+      <div className="font-display text-lg font-bold text-ink-900">{value}</div>
     </div>
   )
 }

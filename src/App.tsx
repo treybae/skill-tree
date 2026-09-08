@@ -11,7 +11,7 @@ function App() {
   const activeTree = trees.find((t) => t.id === activeTreeId) ?? null
 
   return (
-    <div className="flex h-screen w-screen flex-col overflow-hidden bg-ink-950 text-ink-100">
+    <div className="flex h-screen w-screen flex-col overflow-hidden bg-ink-50 text-ink-900">
       <CharacterHeader />
       <div className="flex min-h-0 flex-1">
         <Sidebar />
