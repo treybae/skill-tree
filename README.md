@@ -34,6 +34,12 @@ npm run preview
 - Zustand (with `persist`) for state management and local storage
 - Tailwind CSS for styling
 
+## Deployment
+
+Pushes to `master` build and deploy automatically to AWS (S3 + CloudFront) via
+GitHub Actions. See [`infra/README.md`](infra/README.md) for the one-time AWS
+setup (Terraform) and how the pipeline is wired up.
+
 ## Usage
 
 - Click **+ New Learning Path** in the sidebar to start a new tree, choose a life area, color, and icon.
