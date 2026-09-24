@@ -7,7 +7,7 @@ An interactive, RPG-style skill tree for planning your own development — profe
 - **Multiple learning paths ("trees")** grouped by life area (Professional, Personal, Knowledge, Skills, Achievements)
 - **Node-based skill graph** built on an interactive canvas — drag nodes to reposition, drag from a node's edge to another node to set it as a prerequisite
 - **RPG-style progression** — nodes are `locked` 🔒 until their prerequisites are mastered, then become `available`, `in-progress`, or `completed`, with glowing status styling
-- **XP & leveling** — each skill node carries an XP value; your character levels up as you complete nodes, with a level curve and progress bar
+- **Cost tracking** — each skill node carries a $ cost; the header shows total spend against the full cost of every path so you can see what you've invested and what's left to budget for
 - **Rich node details** — title, description, personal notes, and linked resources (courses, articles, docs) per skill
 - **Everything persists locally** in the browser (`localStorage`) — no account or backend required
 
@@ -43,8 +43,8 @@ setup (Terraform) and how the pipeline is wired up.
 ## Usage
 
 - Click **+ New Learning Path** in the sidebar to start a new tree, choose a life area, color, and icon.
-- Click **+ Add Skill Node** (shown when no node is selected) to add a skill to the active path.
-- Click any node to edit its title, description, XP, status, notes, and resource links in the right-hand panel.
+- Click **+ Add Skill** (top-right of the canvas) to add a skill to the active path.
+- Click any node to edit its title, description, $ cost, status, notes, and resource links in the right-hand panel.
 - Drag from the small dot on the right edge of a node to another node to connect them as a prerequisite — the target stays locked until the source is completed.
 - Click an edge to remove a connection.
 - Drag nodes to arrange your tree layout; positions are saved automatically.

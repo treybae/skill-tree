@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import { Handle, Position, type Node, type NodeProps } from '@xyflow/react'
 import type { NodeStatus, SkillNodeData } from '../types'
+import { formatCurrency } from '../utils/skillTreeLogic'
 
 export type SkillFlowNodeData = SkillNodeData & {
   status: NodeStatus
@@ -40,7 +41,7 @@ function SkillNodeInner({ data, selected }: NodeProps<FlowSkillNode>) {
       <div className="flex items-center justify-between gap-2">
         <span className="text-lg leading-none">{status === 'locked' ? '🔒' : data.icon}</span>
         <span className="rounded-full bg-ink-100 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-ink-600">
-          {data.xp} XP
+          {formatCurrency(data.cost)}
         </span>
       </div>
       <div className="font-display text-sm font-semibold leading-tight">{data.title}</div>

@@ -5,6 +5,7 @@ import {
   BackgroundVariant,
   Controls,
   MiniMap,
+  Panel,
   type Connection,
   type Edge,
   type NodeMouseHandler,
@@ -13,7 +14,7 @@ import {
 import '@xyflow/react/dist/style.css'
 import { useTreeStore } from '../store/useTreeStore'
 import { useResolvedTheme } from '../store/useThemeStore'
-import { deriveStatus } from '../utils/skillTreeLogic'
+import { deriveStatus, defaultNewNode } from '../utils/skillTreeLogic'
 import { SkillNode, type FlowSkillNode } from './SkillNode'
 import type { SkillTree } from '../types'
 
@@ -28,6 +29,7 @@ export function TreeCanvas({ tree }: { tree: SkillTree }) {
   const resolvedTheme = useResolvedTheme()
   const canvasColors = CANVAS_COLORS[resolvedTheme]
   const moveNode = useTreeStore((s) => s.moveNode)
+  const addNode = useTreeStore((s) => s.addNode)
   const addEdge = useTreeStore((s) => s.addEdge)
   const deleteEdge = useTreeStore((s) => s.deleteEdge)
   const setSelectedNode = useTreeStore((s) => s.setSelectedNode)
@@ -102,6 +104,11 @@ export function TreeCanvas({ tree }: { tree: SkillTree }) {
 
   const onPaneClick = useCallback(() => setSelectedNode(null), [setSelectedNode])
 
+  const handleAddNode = useCallback(() => {
+    const id = addNode(tree.id, defaultNewNode(tree))
+    setSelectedNode(id)
+  }, [addNode, tree, setSelectedNode])
+
   return (
     <ReactFlow
       nodes={flowNodes}
@@ -119,6 +126,14 @@ export function TreeCanvas({ tree }: { tree: SkillTree }) {
       maxZoom={1.5}
     >
       <Background variant={BackgroundVariant.Dots} gap={22} size={1.2} color={canvasColors.dot} />
+      <Panel position="top-right">
+        <button
+          onClick={handleAddNode}
+          className="rounded-lg bg-gold-500 px-3 py-2 text-sm font-semibold text-white shadow-md transition-opacity hover:opacity-90"
+        >
+          + Add Skill
+        </button>
+      </Panel>
       <Controls className="!bg-surface !border-ink-300 [&_button]:!bg-surface [&_button]:!border-ink-300 [&_button]:!fill-ink-600 [&_button:hover]:!bg-ink-100" />
       <MiniMap
         pannable

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { nanoid } from 'nanoid'
 import { useTreeStore } from '../store/useTreeStore'
 import { NODE_ICONS, type SkillTree } from '../types'
-import { deriveStatus } from '../utils/skillTreeLogic'
+import { deriveStatus, defaultNewNode } from '../utils/skillTreeLogic'
 
 const STATUS_OPTIONS: { id: 'available' | 'in-progress' | 'completed'; label: string }[] = [
   { id: 'available', label: 'Not Started' },
@@ -24,18 +24,7 @@ export function NodeEditorPanel({ tree }: { tree: SkillTree }) {
   const node = tree.nodes.find((n) => n.id === selectedNodeId)
 
   const handleAddNode = () => {
-    const offsetX = 60 + (tree.nodes.length % 5) * 40
-    const offsetY = 60 + Math.floor(tree.nodes.length / 5) * 140
-    const id = addNode(tree.id, {
-      title: 'New Skill',
-      description: '',
-      xp: 50,
-      manualStatus: 'available',
-      notes: '',
-      resources: [],
-      position: { x: offsetX, y: offsetY },
-      icon: NODE_ICONS[tree.nodes.length % NODE_ICONS.length],
-    })
+    const id = addNode(tree.id, defaultNewNode(tree))
     setSelectedNode(id)
   }
 
@@ -134,14 +123,18 @@ export function NodeEditorPanel({ tree }: { tree: SkillTree }) {
 
         <div className="flex gap-3">
           <div className="flex-1">
-            <label className="mb-1 block text-xs font-semibold text-ink-500">XP Value</label>
-            <input
-              type="number"
-              min={0}
-              value={node.xp}
-              onChange={(e) => updateNode(tree.id, node.id, { xp: Math.max(0, Number(e.target.value) || 0) })}
-              className="w-full rounded-lg border border-ink-300 bg-surface px-3 py-2 text-sm text-ink-900 outline-none focus:border-gold-500"
-            />
+            <label className="mb-1 block text-xs font-semibold text-ink-500">$ Cost</label>
+            <div className="relative">
+              <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-ink-500">$</span>
+              <input
+                type="number"
+                min={0}
+                step="0.01"
+                value={node.cost}
+                onChange={(e) => updateNode(tree.id, node.id, { cost: Math.max(0, Number(e.target.value) || 0) })}
+                className="w-full rounded-lg border border-ink-300 bg-surface py-2 pl-6 pr-3 text-sm text-ink-900 outline-none focus:border-gold-500"
+              />
+            </div>
           </div>
           <div className="flex-1">
             <label className="mb-1 block text-xs font-semibold text-ink-500">Status</label>

@@ -12,7 +12,7 @@ export interface SkillNodeData {
   id: string
   title: string
   description: string
-  xp: number
+  cost: number
   /** manual status; 'locked' is derived automatically when prerequisites are unmet */
   manualStatus: Exclude<NodeStatus, 'locked'>
   notes: string

@@ -13,12 +13,12 @@ export function buildSeedTrees(): SkillTree[] {
     icon: '⚒️',
     createdAt: now,
     nodes: [
-      { id: 'b1', title: 'REST API Fundamentals', description: 'Design clean, resource-oriented APIs.', xp: 50, manualStatus: 'completed', notes: '', resources: [], position: { x: 0, y: 0 }, icon: '📖' },
-      { id: 'b2', title: 'Databases & SQL', description: 'Schema design, indexing, transactions.', xp: 60, manualStatus: 'completed', notes: '', resources: [], position: { x: 260, y: -80 }, icon: '🗝️' },
-      { id: 'b3', title: 'Authentication & Security', description: 'OAuth2, JWTs, secure session handling.', xp: 70, manualStatus: 'in-progress', notes: 'Working through OAuth2 flows.', resources: [], position: { x: 260, y: 80 }, icon: '🛡️' },
-      { id: 'b4', title: 'Caching Strategies', description: 'Redis, CDN caching, cache invalidation.', xp: 60, manualStatus: 'available', notes: '', resources: [], position: { x: 520, y: -80 }, icon: '⚡' },
-      { id: 'b5', title: 'Message Queues', description: 'Async processing with Kafka/RabbitMQ.', xp: 80, manualStatus: 'available', notes: '', resources: [], position: { x: 520, y: 80 }, icon: '🔮' },
-      { id: 'b6', title: 'Distributed Systems', description: 'Consensus, sharding, CAP theorem.', xp: 120, manualStatus: 'available', notes: '', resources: [], position: { x: 780, y: 0 }, icon: '🌟' },
+      { id: 'b1', title: 'REST API Fundamentals', description: 'Design clean, resource-oriented APIs.', cost: 50, manualStatus: 'completed', notes: '', resources: [], position: { x: 0, y: 0 }, icon: '📖' },
+      { id: 'b2', title: 'Databases & SQL', description: 'Schema design, indexing, transactions.', cost: 60, manualStatus: 'completed', notes: '', resources: [], position: { x: 260, y: -80 }, icon: '🗝️' },
+      { id: 'b3', title: 'Authentication & Security', description: 'OAuth2, JWTs, secure session handling.', cost: 70, manualStatus: 'in-progress', notes: 'Working through OAuth2 flows.', resources: [], position: { x: 260, y: 80 }, icon: '🛡️' },
+      { id: 'b4', title: 'Caching Strategies', description: 'Redis, CDN caching, cache invalidation.', cost: 60, manualStatus: 'available', notes: '', resources: [], position: { x: 520, y: -80 }, icon: '⚡' },
+      { id: 'b5', title: 'Message Queues', description: 'Async processing with Kafka/RabbitMQ.', cost: 80, manualStatus: 'available', notes: '', resources: [], position: { x: 520, y: 80 }, icon: '🔮' },
+      { id: 'b6', title: 'Distributed Systems', description: 'Consensus, sharding, CAP theorem.', cost: 120, manualStatus: 'available', notes: '', resources: [], position: { x: 780, y: 0 }, icon: '🌟' },
     ],
     edges: [
       { id: nanoid(), source: 'b1', target: 'b3' },
@@ -39,10 +39,10 @@ export function buildSeedTrees(): SkillTree[] {
     icon: '🌙',
     createdAt: now,
     nodes: [
-      { id: 'f1', title: 'Consistent Habit', description: '3x/week for 8 weeks straight.', xp: 40, manualStatus: 'completed', notes: '', resources: [], position: { x: 0, y: 0 }, icon: '🎯' },
-      { id: 'f2', title: 'Proper Form', description: 'Squat, deadlift, press with good technique.', xp: 50, manualStatus: 'in-progress', notes: '', resources: [], position: { x: 260, y: 0 }, icon: '⚔️' },
-      { id: 'f3', title: '5K Run', description: 'Run 5K without stopping.', xp: 60, manualStatus: 'available', notes: '', resources: [], position: { x: 520, y: -70 }, icon: '🏹' },
-      { id: 'f4', title: 'Bodyweight Milestones', description: 'Pull-up, pistol squat, handstand hold.', xp: 90, manualStatus: 'available', notes: '', resources: [], position: { x: 520, y: 70 }, icon: '💎' },
+      { id: 'f1', title: 'Consistent Habit', description: '3x/week for 8 weeks straight.', cost: 40, manualStatus: 'completed', notes: '', resources: [], position: { x: 0, y: 0 }, icon: '🎯' },
+      { id: 'f2', title: 'Proper Form', description: 'Squat, deadlift, press with good technique.', cost: 50, manualStatus: 'in-progress', notes: '', resources: [], position: { x: 260, y: 0 }, icon: '⚔️' },
+      { id: 'f3', title: '5K Run', description: 'Run 5K without stopping.', cost: 60, manualStatus: 'available', notes: '', resources: [], position: { x: 520, y: -70 }, icon: '🏹' },
+      { id: 'f4', title: 'Bodyweight Milestones', description: 'Pull-up, pistol squat, handstand hold.', cost: 90, manualStatus: 'available', notes: '', resources: [], position: { x: 520, y: 70 }, icon: '💎' },
     ],
     edges: [
       { id: nanoid(), source: 'f1', target: 'f2' },

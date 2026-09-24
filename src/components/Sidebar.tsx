@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useTreeStore } from '../store/useTreeStore'
 import { LIFE_AREAS } from '../types'
-import { treeStats } from '../utils/skillTreeLogic'
+import { treeStats, formatCurrency } from '../utils/skillTreeLogic'
 import { NewTreeModal } from './NewTreeModal'
 
 export function Sidebar() {
@@ -70,7 +70,7 @@ export function Sidebar() {
                           />
                         </div>
                         <div className="text-[10px] text-ink-500">
-                          {stats.completed}/{stats.total} mastered &middot; {stats.earnedXp} XP
+                          {stats.completed}/{stats.total} mastered &middot; {formatCurrency(stats.earnedCost)} spent
                         </div>
                       </button>
                     )

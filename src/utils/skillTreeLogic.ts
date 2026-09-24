@@ -1,4 +1,5 @@
-import type { NodeStatus, SkillTree } from '../types'
+import type { NodeStatus, SkillNodeData, SkillTree } from '../types'
+import { NODE_ICONS } from '../types'
 
 /**
  * A node is only ever 'locked' due to unmet prerequisites - manualStatus tracks
@@ -22,23 +23,23 @@ export function deriveStatus(tree: SkillTree, nodeId: string): NodeStatus {
 }
 
 export function treeStats(tree: SkillTree) {
-  let totalXp = 0
-  let earnedXp = 0
+  let totalCost = 0
+  let earnedCost = 0
   let completed = 0
   let inProgress = 0
   for (const node of tree.nodes) {
-    totalXp += node.xp
+    totalCost += node.cost
     const status = deriveStatus(tree, node.id)
     if (status === 'completed') {
-      earnedXp += node.xp
+      earnedCost += node.cost
       completed++
     } else if (status === 'in-progress') {
       inProgress++
     }
   }
   return {
-    totalXp,
-    earnedXp,
+    totalCost,
+    earnedCost,
     completed,
     inProgress,
     total: tree.nodes.length,
@@ -46,15 +47,29 @@ export function treeStats(tree: SkillTree) {
   }
 }
 
-/** Simple RPG-ish level curve: each level needs progressively more XP. */
-export function levelFromXp(xp: number) {
-  let level = 1
-  let remaining = xp
-  let needed = 100
-  while (remaining >= needed) {
-    remaining -= needed
-    level++
-    needed = Math.round(needed * 1.25)
+export function formatCurrency(amount: number): string {
+  const formatted = Number.isInteger(amount)
+    ? amount.toLocaleString('en-US')
+    : amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  return `$${formatted}`
+}
+
+/** Grid layout for newly-added nodes so they don't all stack on top of each other. */
+export function nextNodePosition(tree: SkillTree) {
+  const x = 60 + (tree.nodes.length % 5) * 40
+  const y = 60 + Math.floor(tree.nodes.length / 5) * 140
+  return { x, y }
+}
+
+export function defaultNewNode(tree: SkillTree): Omit<SkillNodeData, 'id'> {
+  return {
+    title: 'New Skill',
+    description: '',
+    cost: 50,
+    manualStatus: 'available',
+    notes: '',
+    resources: [],
+    position: nextNodePosition(tree),
+    icon: NODE_ICONS[tree.nodes.length % NODE_ICONS.length],
   }
-  return { level, xpIntoLevel: remaining, xpForNextLevel: needed }
 }
